@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import './App.css';
 import io from "socket.io-client";
@@ -7,22 +7,23 @@ import Lottie from "lottie-react"
 import sky from './assets/sky.png'
 import road from './assets/road.png'
 import mountains from './assets/mountain_fade.png'
-import avif from './assets/explosion_spritesheet.avif'
 import Explosion from './assets/explosion.json'
 
+//LEFT SIDE ROAD TREES
 import LeftSide from './components/road_left_side'
-
+//RIGHT SIDE ROAD TREES
 import RightSide from './components/road_right_side'
-
+//ENEMY CARS
 import EnemyCars from './components/enemy_cars'
+//PLAYER CAR //MAIN CAR
 import Car from './components/player_car'
-
+//PANEL THAT CONTAINS CHAT/INFORMATION/TOP PLAYERS LIST
 import InformationPanels from './components/information_panels'
-
+//AUTH //REGISTER OR LOGIN
 import Auth from './components/auth'
-//explosion_spritesheet.avif
+
 const App = () => {
-  const controls = useAnimation()
+
   //CONNECT TO THE SOCKET
   const socket = io.connect("http://localhost:3001")
 
@@ -34,7 +35,7 @@ const App = () => {
 
     //user data
     user_level: 1,
-    username: 'alaagamal',//null,
+    username: null,
     password: null,
     passed_cars: 0,
     logged_in: false,
@@ -43,11 +44,10 @@ const App = () => {
     topUsers: false,
   })
 
-
+  //RESTART THE GAME AFTER EXPLOSION
   React.useEffect(() => {
     if (mainState.gameOn === false) {
       const tout = setTimeout(() => {
-        console.log("SET GAME ON")
         setState(state => {
           return { ...state, gameOn: true }
         });
@@ -59,16 +59,11 @@ const App = () => {
 
   const countSeconds = React.useRef(0)
 
-  /*
-            <Car mainState={mainState} setState={setState} countSeconds={countSeconds} />
-  
-            <LeftSide />
-            <RightSide />
-            <EnemyCars countSeconds={countSeconds} mainState={mainState} setState={setState} socket={socket} />
-  
-            */
+  //CHECK IF USER LOGGED IN
   if (!mainState.logged_in)
     return (<Auth socket={socket} setState={setState} />)
+
+
   return (
     <div>
       <div className="container">
@@ -93,15 +88,8 @@ const App = () => {
             </div>
 
           }
-
-
-
-
         </div>
-
-
       </div>
-
       <InformationPanels socket={socket} mainState={mainState} setState={setState} />
 
     </div>
