@@ -1,38 +1,111 @@
-.App {
+body {
+  background-color: #000;
+  color:#969399;
+  padding: 40px;
+  font-family: Arial;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sky{
+  width:700px;
+  height:450px;
+  margin-top:-20px;
+  margin-bottom:-50px
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.road{
+  position: absolute;
+  width:700px;
+  height:120px;
+  bottom:-10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction:column;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  width:700px;
+  margin:0 auto
 }
 
-.App-link {
-  color: #61dafb;
+.tstbx{
+  width:700px;
+  height:100px;
+  position: absolute;
+  bottom:90px
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mountains{
+  width: 700px;
+  height:100px;
+  left:0;
+  position: absolute;
+
+}
+
+.car_center{
+  position: absolute;
+  width: 95px;
+  height: 75px;
+  left:297px;
+  bottom:-83px;
+  z-index: 99999;
+}
+
+.buttons{
+  position: relative;
+  width:200px;
+  height:100px;
+  z-index: 9999999;
+  top:0
+}
+
+.road_left_side{
+  background-image: url("http://192.168.0.139/car/sideroad_left.png");
+  background-size: 300px;
+  background-repeat: no-repeat;
+  clip: rect(0, 77px, 180px, 0);
+  width: 300px;
+  height:300px;
+  position: absolute;
+}
+
+.road_left_side_2{
+  background-size: 300px;
+  clip: rect(0, 40px, 40px, 0);
+  background-position: bottom 240px right 150px;
+  position: absolute;
+}
+
+.left_mountain{
+  background-image: url("http://192.168.0.139/car/mountain_left.png");
+  background-repeat: no-repeat;
+  background-size: 80px;
+  width:300px;
+  height:200px;
+  position: absolute;
+}
+
+.right_mountain{
+  background-image: url("http://192.168.0.139/car/mountain_right.png");
+  background-repeat: no-repeat;
+  background-size: 100px;
+  width:300px;
+  height:200px;
+  position: absolute;
+}
+.enemy_carsss{
+  position: relative;
+  width:30%;
+  height:100px;
+  background-color: red;
+  margin-left:35%
+}
+.enemy_left_car{
+  width:120px;
+  height:80px;
+  position: absolute;
+
 }
